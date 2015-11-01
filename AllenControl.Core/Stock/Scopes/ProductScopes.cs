@@ -9,7 +9,7 @@ namespace AllenControl.Core.Stock.Scopes
         {
             return AssertionConcern.IsSatisfiedBy(
                     AssertionConcern.AssertLength(product.Description, 4, 100, "O produto deve ter entre 4 e 100 caracteres."),
-                    AssertionConcern.AssertIsGreaterThan(0, product.Price, "O valor unitário deve ser maior que zero."),
+                    AssertionConcern.AssertIsGreaterThan(product.Price, 0, "O valor unitário deve ser maior que zero."),
                     AssertionConcern.AssertNotEmpty(product.CategoryId, "A categoria do produto é obrigatória."),
                     AssertionConcern.AssertNotEmpty(product.UnitOfMeasurementId, "A unidade de medida é obrigatória.")
                 );

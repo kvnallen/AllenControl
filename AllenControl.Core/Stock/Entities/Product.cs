@@ -1,4 +1,5 @@
 ﻿using System;
+using AllenControl.Core.Stock.Scopes;
 
 namespace AllenControl.Core.Stock.Entities
 {
@@ -8,7 +9,6 @@ namespace AllenControl.Core.Stock.Entities
 
         public Product(string description, decimal price, int quantityOnHand, string image, string unitOfMeasurementId, string categoryId)
         {
-            Id = Guid.NewGuid().ToString();
             Description = description;
             Price = price;
             QuantityOnHand = quantityOnHand;
@@ -20,6 +20,7 @@ namespace AllenControl.Core.Stock.Entities
         }
 
         public string Id { get; private set; }
+        public int Code { get; private set; }
         public string Description { get; private set; }
         public decimal Price { get; private set; }
         public int QuantityOnHand { get; private set; }
@@ -36,7 +37,7 @@ namespace AllenControl.Core.Stock.Entities
 
         public void Register()
         {
-            
+            this.RegisterScopeIsValid();
         }
 
         public void Activate()
@@ -54,6 +55,7 @@ namespace AllenControl.Core.Stock.Entities
         public void UpdateQuantityOnHand(int quantity)
         {
             QuantityOnHand = quantity;
+            LastModification = DateTime.Now;
         }
     }
 }
