@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AllenControl.Core.Account.Entities;
 using AllenControl.Core.Stock.Enums;
+using AllenControl.Core.Stock.Scopes;
 
 namespace AllenControl.Core.Stock.Entities
 {
@@ -10,10 +11,13 @@ namespace AllenControl.Core.Stock.Entities
     {
         protected Order() { }
 
-        public Order(string userId, string notes)
+        public Order(List<OrderItem> orderItens, string userId, string notes)
         {
-            Notes = notes;
+            Id = Guid.NewGuid().ToString();
             UserId = userId;
+            Notes = notes;
+            OrderItems = new List<OrderItem>();
+            orderItens.ForEach(AddItem);
             Status = OrderStatus.Created;
             Date = DateTime.Now;
         }
@@ -31,12 +35,22 @@ namespace AllenControl.Core.Stock.Entities
 
         public decimal Total => OrderItems.Sum(x => x.Price * x.Quantity);
 
+        public void Register()
+        {
+            this.RegisterScopeIsValid();
+        }
+
+        public void AddItem(OrderItem item)
+        {
+            if (item.Register())
+                OrderItems.Add(item);
+        }
+
         public void MarkAsPaid()
         {
             if (Status == OrderStatus.Canceled)
                 return;
 
-            OrderItems.ToList().ForEach(x => x.WriteOff());
             PaidDate = DateTime.Now;
             Status = OrderStatus.Paid;
         }
@@ -53,11 +67,6 @@ namespace AllenControl.Core.Stock.Entities
         public void Cancel()
         {
             Status = OrderStatus.Canceled;
-        }
-
-        public void AddItem(OrderItem orderItem)
-        {
-            OrderItems.Add(orderItem);
         }
     }
 }

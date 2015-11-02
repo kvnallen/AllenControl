@@ -9,6 +9,7 @@ namespace AllenControl.Core.Stock.Entities
 
         public Product(string description, decimal price, int quantityOnHand, string image, string unitOfMeasurementId, string categoryId)
         {
+            Id = Guid.NewGuid().ToString();
             Description = description;
             Price = price;
             QuantityOnHand = quantityOnHand;

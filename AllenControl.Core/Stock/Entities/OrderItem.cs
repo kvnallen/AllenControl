@@ -1,32 +1,32 @@
 using System;
+using AllenControl.Core.Stock.Scopes;
 
 namespace AllenControl.Core.Stock.Entities
 {
     public class OrderItem
     {
-        protected OrderItem()
-        {
-        }
-
-        public OrderItem(int quantity, decimal price, Product product)
-        {
-            Id = Guid.NewGuid().ToString();
-            Quantity = quantity;
-            ProductId = product.Id;
-            Product = product;
-            Price = price;
-        }
-
-        public string Id { get; private set; }
+        public string Id { get; private set; } = Guid.NewGuid().ToString();
         public decimal Price { get; private set; }
         public int Quantity { get; private set; }
-
         public string ProductId { get; private set; }
         public Product Product { get; private set; }
 
-        public void WriteOff()
+        public bool Register()
         {
-            Product.UpdateQuantityOnHand(Product.QuantityOnHand - Quantity);
+            return this.RegisterScopeIsValid(Product);
+        }
+
+        public void AddProduct(Product product, int quantity, decimal price)
+        {
+            if (!this.AddProductScopeIsValid(product, quantity, price))
+                return;
+
+            Price = price;
+            Quantity = quantity;
+            Product = product;
+            ProductId = product.Id;
+
+            Product.UpdateQuantityOnHand(Product.QuantityOnHand - quantity);
         }
     }
 }
