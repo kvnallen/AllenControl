@@ -50,6 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Stock\Builders\CategoryBuilder.cs" />
     <Compile Include="Stock\Builders\ProductBuilder.cs" />
     <Compile Include="Stock\CategoryTests.cs" />
     <Compile Include="Stock\Scopes\OrderItensScopesTests.cs" />

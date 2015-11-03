@@ -1,4 +1,5 @@
 ﻿using System;
+using AllenControl.Core.Stock.Scopes;
 
 namespace AllenControl.Core.Stock.Entities
 {
@@ -14,5 +15,10 @@ namespace AllenControl.Core.Stock.Entities
 
         public string Id { get; private set; }
         public string Name { get; private set; }
+
+        public void Register()
+        {
+            this.RegisterScopeIsValid();
+        }
     }
 }

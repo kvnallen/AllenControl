@@ -58,13 +58,12 @@
     <Compile Include="Stock\Scopes\OrderItemScopes.cs" />
     <Compile Include="Stock\Scopes\OrderScopes.cs" />
     <Compile Include="Stock\Scopes\ProductScopes.cs" />
+    <Compile Include="Stock\Scopes\UnitOfMeasurementScopes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Order\Entities\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
