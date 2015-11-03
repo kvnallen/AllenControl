@@ -1,6 +1,7 @@
 ﻿using System;
 using AllenControl.Core.Account.Entities;
 using AllenControl.Core.Stock.Enums;
+using AllenControl.Core.Stock.Scopes;
 
 namespace AllenControl.Core.Stock.Entities
 {
@@ -8,12 +9,12 @@ namespace AllenControl.Core.Stock.Entities
     {
         protected Entry() { }
 
-        public Entry(string productId, int quantity, decimal price, string userId)
+        public Entry(string productId, int amount, decimal price, string userId)
         {
             Id = Guid.NewGuid().ToString();
             Price = price;
             UserId = userId;
-            Quantity = quantity;
+            Amount = amount;
             ProductId = productId;
             Date = DateTime.Now;
             Status = EntryStatus.Created;
@@ -22,7 +23,7 @@ namespace AllenControl.Core.Stock.Entities
         public string Id { get; private set; }
 
         public decimal Price { get; private set; }
-        public int Quantity { get; private set; }
+        public int Amount { get; private set; }
 
         public string ProductId { get; private set; }
         public Product Product { get; private set; }
@@ -40,11 +41,14 @@ namespace AllenControl.Core.Stock.Entities
         {
             Accomplished = DateTime.Now;
             Status = EntryStatus.Accomplished;
-            Product.UpdateQuantityOnHand(Product.QuantityOnHand + Quantity);
+            Product.UpdateQuantityOnHand(Product.QuantityOnHand + Amount);
         }
 
         public void Cancel()
         {
+            if (!this.CancelEntryScopeIsValid())
+                return;
+
             Canceled = DateTime.Now;
             Status = EntryStatus.Canceled;
         }

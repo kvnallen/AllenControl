@@ -10,7 +10,7 @@ namespace AllenControl.Core.Tests.Account.Scopes
         private readonly User _validUser = new User("Kevin Allen", "kevinallen@outlook.com", "123456");
 
         [TestMethod, TestCategory("User - Scopes")]
-        public void RegisterScopeIsValid()
+        public void ShouldRegister()
         {
             var user = new User("Kevin Allen", "kevinallen@outlook.com", "123456");
             Assert.AreEqual(true, user.RegisterScopeIsValid("123456"));

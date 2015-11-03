@@ -51,8 +51,10 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Stock\Builders\CategoryBuilder.cs" />
+    <Compile Include="Stock\Builders\EntryBuilder.cs" />
     <Compile Include="Stock\Builders\ProductBuilder.cs" />
     <Compile Include="Stock\CategoryTests.cs" />
+    <Compile Include="Stock\Scopes\EntryScopesTests.cs" />
     <Compile Include="Stock\Scopes\OrderItensScopesTests.cs" />
     <Compile Include="Stock\Scopes\OrderScopesTests.cs" />
     <Compile Include="Stock\Scopes\ProductScopesTests.cs" />
