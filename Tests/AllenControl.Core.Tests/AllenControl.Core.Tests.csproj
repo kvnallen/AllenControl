@@ -50,10 +50,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Stock\Builders\CategoryBuilder.cs" />
-    <Compile Include="Stock\Builders\EntryBuilder.cs" />
-    <Compile Include="Stock\Builders\ProductBuilder.cs" />
-    <Compile Include="Stock\CategoryTests.cs" />
+    <Compile Include="Stock\Factories\CategoryFactory.cs" />
+    <Compile Include="Stock\Factories\EntryFactory.cs" />
+    <Compile Include="Stock\Factories\ProductFactory.cs" />
+    <Compile Include="Stock\Entities\CategoryTests.cs" />
+    <Compile Include="Stock\Entities\EntryTests.cs" />
     <Compile Include="Stock\Scopes\EntryScopesTests.cs" />
     <Compile Include="Stock\Scopes\OrderItensScopesTests.cs" />
     <Compile Include="Stock\Scopes\OrderScopesTests.cs" />

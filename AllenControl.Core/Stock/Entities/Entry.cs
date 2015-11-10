@@ -9,13 +9,13 @@ namespace AllenControl.Core.Stock.Entities
     {
         protected Entry() { }
 
-        public Entry(string productId, int amount, decimal price, string userId)
+        public Entry(Product product, int amount, decimal price, string userId)
         {
             Id = Guid.NewGuid().ToString();
             Price = price;
             UserId = userId;
             Amount = amount;
-            ProductId = productId;
+            Product = product;
             Date = DateTime.Now;
             Status = EntryStatus.Created;
         }
@@ -37,7 +37,12 @@ namespace AllenControl.Core.Stock.Entities
 
         public EntryStatus Status { get; private set; }
 
-        public void WriteOff()
+        public void Register()
+        {
+            this.RegisterScopeIsValid();
+        }
+
+        public void MarkAsAccomplished()
         {
             Accomplished = DateTime.Now;
             Status = EntryStatus.Accomplished;

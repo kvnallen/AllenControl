@@ -1,7 +1,6 @@
-﻿using System;
-using AllenControl.Core.Stock.Entities;
+﻿using AllenControl.Core.Stock.Entities;
 using AllenControl.Core.Stock.Scopes;
-using AllenControl.Core.Tests.Stock.Builders;
+using AllenControl.Core.Tests.Stock.Factories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AllenControl.Core.Tests.Stock.Scopes
@@ -13,7 +12,7 @@ namespace AllenControl.Core.Tests.Stock.Scopes
         public void ShouldNotAddProductWhenQuantityIsOutOfStock()
         {
             var orderItem = new OrderItem();
-            Assert.AreEqual(false, orderItem.AddProductScopeIsValid(ProductBuilder.ValidProduct, 320, 30));
+            Assert.AreEqual(false, orderItem.AddProductScopeIsValid(ProductFactory.ValidProduct, 320, 30));
         }
     }
 }

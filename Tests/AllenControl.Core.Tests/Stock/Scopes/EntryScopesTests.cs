@@ -10,25 +10,34 @@ namespace AllenControl.Core.Tests.Stock.Scopes
         [TestMethod, TestCategory("Entry - Scope - Register")]
         public void ShouldRegisterEntry()
         {
-            Assert.AreEqual(EntryBuilder.ValidEntry.RegisterScopeIsValid(), true);
+            Assert.AreEqual(EntryFactory.ValidEntry.RegisterScopeIsValid(), true);
         }
 
         [TestMethod, TestCategory("Entry - Scope - Register")]
         public void ShouldNotRegisterEntryWhenAmountIsNegative()
         {
-            Assert.IsFalse(EntryBuilder.EntryWithNegativeAmount.RegisterScopeIsValid());
+            Assert.IsFalse(EntryFactory.EntryWithNegativeAmount.RegisterScopeIsValid());
         }
 
         [TestMethod, TestCategory("Entry - Scope - Register")]
         public void ShouldNotRegisterEntryWhenPriceIsNegative()
         {
-            Assert.IsFalse(EntryBuilder.EntryWithNegativePrice.RegisterScopeIsValid());
+            Assert.IsFalse(EntryFactory.EntryWithNegativePrice.RegisterScopeIsValid());
         }
 
         [TestMethod, TestCategory("Entry - Scope - Register")]
         public void ShouldNotRegisterEntryWithoutProduct()
         {
-            Assert.IsFalse(EntryBuilder.EntryWithoutProduct.RegisterScopeIsValid());
+            Assert.IsFalse(EntryFactory.EntryWithoutProduct.RegisterScopeIsValid());
+        }
+
+        [TestMethod, TestCategory("Entry - Scope - Register")]
+        public void ShouldNotCancelEntryWhenStatusIsCanceled()
+        {
+            var entry = EntryFactory.ValidEntry;
+            entry.Cancel();
+
+            Assert.IsFalse(entry.CancelEntryScopeIsValid());
         }
     }
 }

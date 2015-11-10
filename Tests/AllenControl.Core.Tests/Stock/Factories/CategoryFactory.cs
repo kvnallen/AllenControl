@@ -1,8 +1,8 @@
 ﻿using AllenControl.Core.Stock.Entities;
 
-namespace AllenControl.Core.Tests.Stock.Builders
+namespace AllenControl.Core.Tests.Stock.Factories
 {
-    public class CategoryBuilder
+    public class CategoryFactory
     {
         public static Category ValidCategory => new Category("Categoria Comum"); 
     }

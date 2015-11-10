@@ -1,30 +1,31 @@
 ﻿using System;
 using AllenControl.Core.Stock.Entities;
+using AllenControl.Core.Tests.Stock.Factories;
 
 namespace AllenControl.Core.Tests.Stock.Builders
 {
-    public static class EntryBuilder
+    public static class EntryFactory
     {
         public static Entry ValidEntry => new Entry(
-            productId: Guid.NewGuid().ToString(),
+            product: ProductFactory.ValidProduct,
             amount: 100,
             price: 20m,
             userId: Guid.NewGuid().ToString());
 
         public static Entry EntryWithNegativeAmount => new Entry(
-            productId: Guid.NewGuid().ToString(),
+            product: ProductFactory.ValidProduct,
             amount: -100,
             price: 20m,
             userId: Guid.NewGuid().ToString());
 
         public static Entry EntryWithNegativePrice => new Entry(
-           productId: Guid.NewGuid().ToString(),
+           product: ProductFactory.ValidProduct,
            amount: 100,
            price: -20m,
            userId: Guid.NewGuid().ToString());
 
         public static Entry EntryWithoutProduct => new Entry(
-           productId: null,
+           product: null,
            amount: 100,
            price: -20m,
            userId: Guid.NewGuid().ToString());
