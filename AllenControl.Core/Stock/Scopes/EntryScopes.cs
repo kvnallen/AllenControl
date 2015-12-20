@@ -6,19 +6,19 @@ namespace AllenControl.Core.Stock.Scopes
 {
     public static class EntryScopes
     {
-        public static bool RegisterScopeIsValid(this Entry entry)
+        public static bool RegisterScopeIsValid(this StockMovement stockMovement)
         {
             return IsSatisfiedBy(
-                AssertNotNull(entry.Product, "O produto é obrigatório"),
-                AssertIsGreaterThan(entry.Amount, 0, "A quantidade deve ser maior que zero."),
-                AssertIsGreaterThan(entry.Price, 0, "O preço deve ser maior que zero.")
+                AssertNotNull(stockMovement.Product, "O produto é obrigatório"),
+                AssertIsGreaterThan(stockMovement.Amount, 0, "A quantidade deve ser maior que zero."),
+                AssertIsGreaterThan(stockMovement.Price, 0, "O preço deve ser maior que zero.")
                 );
         }
 
-        public static bool CancelEntryScopeIsValid(this Entry entry)
+        public static bool CancelEntryScopeIsValid(this StockMovement stockMovement)
         {
             return IsSatisfiedBy(
-                AssertTrue(entry.Status != EntryStatus.Canceled, "Entrada já cancelada.")
+                AssertTrue(stockMovement.Status != MovementStatus.Canceled, "Entrada já cancelada.")
                 );
         }
     }

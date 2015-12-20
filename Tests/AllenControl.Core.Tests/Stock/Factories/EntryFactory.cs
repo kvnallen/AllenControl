@@ -1,33 +1,37 @@
 ﻿using System;
 using AllenControl.Core.Stock.Entities;
-using AllenControl.Core.Tests.Stock.Factories;
+using AllenControl.Core.Stock.Enums;
 
-namespace AllenControl.Core.Tests.Stock.Builders
+namespace AllenControl.Core.Tests.Stock.Factories
 {
     public static class EntryFactory
     {
-        public static Entry ValidEntry => new Entry(
+        public static StockMovement ValidStockMovement => new StockMovement(
             product: ProductFactory.ValidProduct,
             amount: 100,
             price: 20m,
-            userId: Guid.NewGuid().ToString());
+            userId: Guid.NewGuid().ToString(),
+            movementType: MovementType.Entry);
 
-        public static Entry EntryWithNegativeAmount => new Entry(
+        public static StockMovement StockMovementWithNegativeAmount => new StockMovement(
             product: ProductFactory.ValidProduct,
             amount: -100,
             price: 20m,
-            userId: Guid.NewGuid().ToString());
+            userId: Guid.NewGuid().ToString(),
+            movementType: MovementType.Entry);
 
-        public static Entry EntryWithNegativePrice => new Entry(
+        public static StockMovement StockMovementWithNegativePrice => new StockMovement(
            product: ProductFactory.ValidProduct,
            amount: 100,
            price: -20m,
-           userId: Guid.NewGuid().ToString());
+           userId: Guid.NewGuid().ToString(),
+           movementType: MovementType.Entry);
 
-        public static Entry EntryWithoutProduct => new Entry(
+        public static StockMovement StockMovementWithoutProduct => new StockMovement(
            product: null,
            amount: 100,
            price: -20m,
-           userId: Guid.NewGuid().ToString());
+           userId: Guid.NewGuid().ToString(),
+           movementType: MovementType.Entry);
     }
 }

@@ -1,6 +1,5 @@
 ﻿using AllenControl.Core.Stock.Entities;
 using AllenControl.Core.Stock.Scopes;
-using AllenControl.Core.Tests.Stock.Builders;
 using AllenControl.Core.Tests.Stock.Factories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
