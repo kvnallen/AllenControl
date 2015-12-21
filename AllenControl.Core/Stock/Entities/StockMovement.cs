@@ -54,11 +54,12 @@ namespace AllenControl.Core.Stock.Entities
                 case MovementType.Entry:
                     Product.UpdateQuantityOnHand(Product.QuantityOnHand + Amount);
                     break;
-                default:
+                case MovementType.Exit:
                     Product.UpdateQuantityOnHand(Product.QuantityOnHand - Amount);
                     break;
+                default:
+                    throw new InvalidOperationException("Tipo de movimentação inválida");
             }
-
         }
 
         public void Cancel()

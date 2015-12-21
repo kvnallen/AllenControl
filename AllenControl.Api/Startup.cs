@@ -1,9 +1,11 @@
 ﻿using System.Web.Http;
+using AllenControl.CrossCutting;
 using Microsoft.Owin;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Owin;
 using SimpleInjector;
+using SimpleInjector.Integration.WebApi;
 
 [assembly: OwinStartup(typeof(AllenControl.Api.Startup))]
 
@@ -19,13 +21,19 @@ namespace AllenControl.Api
             ConfigureWebApi(config);
             ConfigureDependencyInjection(config, container);
 
+            app.UseWebApi(config);
         }
 
         private void ConfigureDependencyInjection(HttpConfiguration config, Container container)
         {
-            var options = container.Options;
+            container.Options.DefaultScopedLifestyle = new WebApiRequestLifestyle();
 
-            
+            RegisterHelper.Register(container);
+
+            container.RegisterWebApiControllers(config);
+            container.Verify();
+
+            config.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(container);
         }
 
 

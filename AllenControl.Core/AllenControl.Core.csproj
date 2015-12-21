@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Account\Entities\User.cs" />
     <Compile Include="Account\Scopes\UserScopes.cs" />
+    <Compile Include="Stock\Commands\NewProductCommand.cs" />
     <Compile Include="Stock\Entities\Category.cs" />
     <Compile Include="Stock\Entities\StockMovement.cs" />
     <Compile Include="Stock\Entities\Order.cs" />
@@ -54,12 +55,14 @@
     <Compile Include="Stock\Enums\MovementStatus.cs" />
     <Compile Include="Stock\Enums\MovementType.cs" />
     <Compile Include="Stock\Enums\OrderStatus.cs" />
+    <Compile Include="Stock\Repositories\IProductRepository.cs" />
     <Compile Include="Stock\Scopes\CategoryScopes.cs" />
     <Compile Include="Stock\Scopes\EntryScopes.cs" />
     <Compile Include="Stock\Scopes\OrderItemScopes.cs" />
     <Compile Include="Stock\Scopes\OrderScopes.cs" />
     <Compile Include="Stock\Scopes\ProductScopes.cs" />
     <Compile Include="Stock\Scopes\UnitOfMeasurementScopes.cs" />
+    <Compile Include="Stock\Services\IProductAppService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

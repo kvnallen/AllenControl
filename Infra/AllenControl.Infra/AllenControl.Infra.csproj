@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Persistence\DataContexts\AllenControlDataContext.cs" />
+    <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Transaction\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transaction\UnitOfWork.cs" />
@@ -60,6 +61,12 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AllenControl.Core\AllenControl.Core.csproj">
+      <Project>{71816F24-E28B-494F-BAE3-7D3A4775E920}</Project>
+      <Name>AllenControl.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
