@@ -13,6 +13,13 @@ namespace AllenControl.Core.Tests.Stock.Factories
             userId: Guid.NewGuid().ToString(),
             movementType: MovementType.Entry);
 
+        public static StockMovement ValidStockMovementOfExit => new StockMovement(
+           product: ProductFactory.ValidProduct,
+           amount: 100,
+           price: 20m,
+           userId: Guid.NewGuid().ToString(),
+           movementType: MovementType.Exit);
+
         public static StockMovement StockMovementWithNegativeAmount => new StockMovement(
             product: ProductFactory.ValidProduct,
             amount: -100,

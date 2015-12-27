@@ -1,18 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using AllenControl.Core.Stock.Commands;
 using AllenControl.Core.Stock.Entities;
 using AllenControl.Core.Stock.Repositories;
+using AllenControl.Infra.Persistence.DataContexts;
 
 namespace AllenControl.Infra.Repositories
 {
     public class ProductRepository : IProductRepository
     {
-        public string Id { get; set; } = Guid.NewGuid().ToString();
+        private readonly AllenControlDbContext _context;
+
+        public ProductRepository(AllenControlDbContext context)
+        {
+            _context = context;
+        }
+
+        public string Id { get; set; }
 
         public IEnumerable<Product> Get()
         {
-            throw new System.NotImplementedException();
+            return _context.Products.ToList();
         }
 
         public Product GetById(string id)
@@ -20,9 +29,9 @@ namespace AllenControl.Infra.Repositories
             throw new System.NotImplementedException();
         }
 
-        public Product Register(NewProductCommand command)
+        public void Register(Product product)
         {
-            throw new System.NotImplementedException();
+            _context.Products.Add(product);
         }
     }
 }

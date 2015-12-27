@@ -13,7 +13,7 @@ namespace AllenControl.Infra.Transaction
 
         public void Commit()
         {
-            throw new System.NotImplementedException();
+            _context.SaveChanges();
         }
     }
 }

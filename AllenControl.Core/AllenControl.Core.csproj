@@ -55,6 +55,7 @@
     <Compile Include="Stock\Enums\MovementStatus.cs" />
     <Compile Include="Stock\Enums\MovementType.cs" />
     <Compile Include="Stock\Enums\OrderStatus.cs" />
+    <Compile Include="Stock\Repositories\ICategoryRepository.cs" />
     <Compile Include="Stock\Repositories\IProductRepository.cs" />
     <Compile Include="Stock\Scopes\CategoryScopes.cs" />
     <Compile Include="Stock\Scopes\EntryScopes.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Stock\Scopes\OrderScopes.cs" />
     <Compile Include="Stock\Scopes\ProductScopes.cs" />
     <Compile Include="Stock\Scopes\UnitOfMeasurementScopes.cs" />
+    <Compile Include="Stock\Services\ICategoryAppService.cs" />
     <Compile Include="Stock\Services\IProductAppService.cs" />
   </ItemGroup>
   <ItemGroup>

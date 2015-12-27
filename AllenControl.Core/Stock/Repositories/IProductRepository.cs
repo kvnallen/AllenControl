@@ -11,6 +11,6 @@ namespace AllenControl.Core.Stock.Repositories
 
         Product GetById(string id);
 
-        Product Register(NewProductCommand command);
+        void Register(Product product);
     }
 }

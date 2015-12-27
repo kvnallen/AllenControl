@@ -6,5 +6,6 @@ namespace AllenControl.Core.Stock.Services
     public interface IProductAppService
     {
         IEnumerable<Product> Get();
+        Product Register(Product product);
     }
 }

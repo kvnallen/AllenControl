@@ -5,7 +5,11 @@ namespace AllenControl.Core.Stock.Entities
 {
     public class Product
     {
-        protected Product() { }
+        
+
+        protected Product()
+        {
+        }
 
         public Product(string description, decimal price, int quantityOnHand, string image, string unitOfMeasurementId, string categoryId)
         {
@@ -36,7 +40,7 @@ namespace AllenControl.Core.Stock.Entities
         public bool Active { get; private set; }
         public DateTime LastModification { get; private set; }
 
-        public void Register()
+        public void RegisterIsValid()
         {
             this.RegisterScopeIsValid();
         }

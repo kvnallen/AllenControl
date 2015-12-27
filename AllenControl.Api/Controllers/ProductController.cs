@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using AllenControl.Core.Stock.Entities;
-using AllenControl.Core.Stock.Repositories;
 using AllenControl.Core.Stock.Services;
 
 namespace AllenControl.Api.Controllers
 {
+    [RoutePrefix("api/v1/product")]
     public class ProductController : BaseController
     {
         private readonly IProductAppService _service;
@@ -20,15 +17,16 @@ namespace AllenControl.Api.Controllers
             _service = service;
         }
 
-        [HttpGet]
+        [HttpGet, Route]
         public Task<HttpResponseMessage> Get()
         {
+            return CreateResponse(HttpStatusCode.OK, _service.Get());
+        }
 
-            
-            var message = Request.CreateResponse(HttpStatusCode.OK, _service.Get());
-
-
-            return Task.FromResult(message);
+        [HttpPost, Route]
+        public Task<HttpResponseMessage> Post([FromBody] Product product)
+        {
+            return CreateResponse(HttpStatusCode.OK, _service.Register(product));
         }
     }
 }
