@@ -48,6 +48,7 @@
     <Compile Include="ProductAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceBase.cs" />
+    <Compile Include="UnitOfMeasurementAppService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AllenControl.Core\AllenControl.Core.csproj">

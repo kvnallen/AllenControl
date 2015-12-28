@@ -20,6 +20,9 @@ namespace AllenControl.CrossCutting
             container.Register<ICategoryAppService, CategoryAppService>(Lifestyle.Scoped);
             container.Register<ICategoryRepository, CategoryRepository>(Lifestyle.Scoped);
 
+            container.Register<IUnitOfMeasurementAppService, UnitOfMeasurementAppService>(Lifestyle.Scoped);
+            container.Register<IUnitOfMeasurementRepository, UnitOfMeasurementRepository>(Lifestyle.Scoped);
+
             container.Register<IUnitOfWork, UnitOfWork>(Lifestyle.Scoped);
             container.Register<AllenControlDbContext>(Lifestyle.Scoped);
             container.Register<IHandler<DomainNotification>, DomainNotificationHandler>(Lifestyle.Scoped);

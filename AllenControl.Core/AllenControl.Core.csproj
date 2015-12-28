@@ -57,6 +57,7 @@
     <Compile Include="Stock\Enums\OrderStatus.cs" />
     <Compile Include="Stock\Repositories\ICategoryRepository.cs" />
     <Compile Include="Stock\Repositories\IProductRepository.cs" />
+    <Compile Include="Stock\Repositories\IUnitOfMeasurementRepository.cs" />
     <Compile Include="Stock\Scopes\CategoryScopes.cs" />
     <Compile Include="Stock\Scopes\EntryScopes.cs" />
     <Compile Include="Stock\Scopes\OrderItemScopes.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Stock\Scopes\UnitOfMeasurementScopes.cs" />
     <Compile Include="Stock\Services\ICategoryAppService.cs" />
     <Compile Include="Stock\Services\IProductAppService.cs" />
+    <Compile Include="Stock\Services\IUnitOfMeasurementAppService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
